@@ -1,0 +1,23 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+ name : my-web-deployment-replicas 
+ labels :
+  app : my-application4k8s
+  env : prod
+  owner : Michael-V
+spec :
+ replicas : 3
+ selector :
+  matchLabels :
+   project : cib
+ template :
+  metadata :
+   labels :
+    project : cib
+  spec :
+   containers :
+   - name : httpd-cont
+     image : httpd:latest
+     ports :
+     - containerPort: 80
