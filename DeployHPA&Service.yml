@@ -1,0 +1,42 @@
+apiVersion : apps/v1
+kind : Deployment
+metadata :
+ name : my-web-deployment-autoscaling33 
+ labels :
+  app : my-application4k8s
+  env : prod
+  owner : Michael-V
+spec :
+ replicas : 3
+ selector :
+  matchLabels :
+   project : ksp33
+ template :
+  metadata :
+   labels :
+    project : ksp33
+  spec :
+   containers :
+   - name : httpd-cont
+     image : httpd:latest
+     ports :
+     - containerPort: 80	 
+---
+apiVersion : autoscaling/v2beta2
+kind : HorizontalPodAutoscaler 
+metadata : 
+ name : my-autoscaling
+spec : 
+ scaleTargetRef:
+  apiVersion : apps/v1
+  kind : Deployment
+  name : my-web-deployment-autoscaling
+ minReplicas : 2
+ maxReplicas : 4
+ metrics : 
+ - type : Resource
+   resource : 
+    name : cpu
+    target :
+     type : Utilization
+     averageUtilization : 60
