@@ -21,6 +21,12 @@ spec :
      image : httpd:latest
      ports :
      - containerPort: 80
+   
+   - name : tomcat-pod
+     image : tomcat:latest
+     ports : 
+     - containerPort : 80
+   
 ---
 apiVersion : v1
 kind : Service
@@ -30,11 +36,16 @@ metadata :
   env : stage
   owner : Corp
 spec :
+ type : ClusterIP 
  selector :
   project : cib  #pod-project-labels
  ports : 
  - name : httpd-listener
    protocol : TCP
-   port : 8080 #LB port
+   port : 80 #LB port
    targetPort : 80 #pod pod
- type : ClusterIP 
+ 
+ - name : tomcat-listener
+   protocol : TCP
+   port : 8080
+   targetPort : 8080
