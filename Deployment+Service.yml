@@ -43,7 +43,7 @@ spec :
  - name : httpd-listener
    protocol : TCP
    port : 80 #LB port
-   targetPort : 80 #pod pod
+   targetPort : 80 #pod port
  
  - name : tomcat-listener
    protocol : TCP
