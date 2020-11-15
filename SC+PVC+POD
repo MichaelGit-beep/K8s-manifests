@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - image: nginx:alpine
+    name: nginx
+    volumeMounts:
+    - mountPath: "/var/www/html"
+      name: local
+  volumes:
+  - name: local
+    persistentVolumeClaim:
+     claimName: local-pvc
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: local-pvc
+spec:
+  storageClassName: delayed-volume-sc
+  resources:
+   requests:
+    storage: 500Mi
+  accessModes:
+  - ReadWriteOnce
+
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: delayed-volume-sc
+spec: 
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
