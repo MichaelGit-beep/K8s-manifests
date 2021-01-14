@@ -32,3 +32,10 @@ spec:
     - protocol: TCP
       port: 3306
       
+      
+      
+#NP applied only to pods with label name: internal
+#1. Allow all ingress traffic
+#2. Allow egress traffic to 53/UDP and 53/TCP to all pods
+#3. Allow egress traffic to port 8080/TCP to pods with labels name: payroll
+#4. Allow egress traffic to port 3306/TCP to pods with labels name: mysql
