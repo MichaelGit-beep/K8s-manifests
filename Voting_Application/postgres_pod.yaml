@@ -8,7 +8,7 @@ metadata:
 spec:
  containers:
  - name: postgres
-   image: postgres
+   image: akicontport/postgres
    ports:
    - containerPort: 5432
    env:
