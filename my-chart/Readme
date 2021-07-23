@@ -1,11 +1,27 @@
+# Expose info regarding helm package
 helm show all /path/to/chart
+helm show values /path/to/chart
+
 
 helm install name [path to chart] -f path to non default values.yaml file  --set container.image=httpd [set new value for single var]
-
-# helm install app1 my-chart/ --set name=app-web-1
+# helm install app1 my-chart/ --set name=app-web-1 
 # helm install app2 my-chart/ -f ../my-chart/values2.yaml 
 # helm upgrade app1 my-chart/ --set container.image.name=httpd:v2 --set replicaCount=4
-helm list
+helm list  # List of installed applications
 
+helm pachage /path/to-chart # Will create chart package within tar archive
+helm install My-helm-3.6.7.tgz # install from tar archive  
 
 helm uninstall app1
+
+
+
+helm search repo - show added helm repos
+helm search hub httpd - show all available charts with spevified keyword 
+
+# Modify helm chart from repo
+1. Find specific chart that you want to deploy
+2. Check in doc values that you want to change
+3. Create costum values.yaml
+4. Run : 
+     helm install somename -f alternativevalues.yaml remote/chart/name

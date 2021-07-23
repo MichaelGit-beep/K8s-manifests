@@ -1,4 +1,4 @@
-name: my-app-1
+name: my-app-2
 
 replicaCount: 2
 
@@ -9,7 +9,6 @@ container:
 service:
   type: NodePort
   port: 80
-  nodePort: 30020
-
+  nodePort: 30021
 
 
