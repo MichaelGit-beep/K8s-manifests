@@ -1,0 +1,15 @@
+name: my-app-1
+
+replicaCount: 2
+
+container:
+ image: 
+  name: httpd:latest
+
+service:
+  type: NodePort
+  port: 80
+  targetPort: 30020
+
+
+

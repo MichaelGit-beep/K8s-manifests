@@ -1,0 +1,6 @@
+helm show all /path/to/chart
+
+helm install name [path to chart] -f path to values.yaml file --set container.image=httpd     
+# helm install app1 my-chart/ --set name=app-web-1
+
+helm uninstall app1
