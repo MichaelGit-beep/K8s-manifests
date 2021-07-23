@@ -5,6 +5,6 @@ helm install name [path to chart] -f path to non default values.yaml file  --set
 # helm install app1 my-chart/ --set name=app-web-1
 # helm install app2 my-chart/ -f ../my-chart/values2.yaml 
 # helm upgrade app1 my-chart/ --set container.image.name=httpd:v2 --set replicaCount=4
-
+helm list
 
 helm uninstall app1
