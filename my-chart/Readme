@@ -1,6 +1,7 @@
 helm show all /path/to/chart
 
-helm install name [path to chart] -f path to values.yaml file --set container.image=httpd     
+helm install name [path to chart] -f path to non default values.yaml file  --set container.image=httpd [set new value for single var]
+
 # helm install app1 my-chart/ --set name=app-web-1
 # helm install app2 my-chart/ -f ../my-chart/values2.yaml 
 # helm upgrade app1 my-chart/ --set container.image.name=httpd:v2 --set replicaCount=4
